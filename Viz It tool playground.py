@@ -19,6 +19,7 @@ def get_1password_secret(field, item):
 
 trino_user = get_1password_secret("username", "TrinoCredentials")
 trino_password = get_1password_secret("password", "TrinoCredentials")
+
 # Connect to Trino using the credentials retrieved from 1Password
 conn = trino.dbapi.connect(
     host='presto-gateway.corp.mongodb.com',
