@@ -9,6 +9,7 @@ import streamlit as st
 import threading
 import time
 
+# Use 1password CLI to get credentials
 def get_1password_secret(field, item):
     result = subprocess.run(
         ["op", "item", "get", item, f"--fields", field, "--reveal"],
