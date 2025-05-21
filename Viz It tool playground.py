@@ -1,26 +1,32 @@
 # This is the playground for the Viz It tool and will be cleaned up to be a production version
 
 import trino
+import subprocess
 import os
-from dotenv import load_dotenv
 import pandas as pd
 import plotly.express as px
 import streamlit as st
 import threading
 import time
 
-load_dotenv(dotenv_path="/Users/nicole.li/PycharmProjects/Hackathon---Viz-It/cre.env")
-
-conn = trino.dbapi.connect(
-    host=os.getenv("TRINO_HOST"),
-    port=int(os.getenv("TRINO_PORT", 443)),
-    user=os.getenv("TRINO_USER"),
-    catalog=os.getenv("TRINO_CATALOG"),
-    http_scheme='https',
-    auth=trino.auth.BasicAuthentication(
-        os.getenv("TRINO_USER"),
-        os.getenv("TRINO_PASSWORD")
+def get_1password_secret(field, item):
+    result = subprocess.run(
+        ["op", "item", "get", item, f"--fields", field, "--reveal"],
+        stdout=subprocess.PIPE,
+        text=True
     )
+    return result.stdout.strip()
+
+trino_user = get_1password_secret("username", "TrinoCredentials")
+trino_password = get_1password_secret("password", "TrinoCredentials")
+# Connect to Trino using the credentials retrieved from 1Password
+conn = trino.dbapi.connect(
+    host='presto-gateway.corp.mongodb.com',
+    port=443,
+    user=trino_user,
+    catalog='awsdatacatalog',
+    http_scheme='https',
+    auth=trino.auth.BasicAuthentication(trino_user, trino_password),
 )
 
 # Query input
