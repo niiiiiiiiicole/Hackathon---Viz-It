@@ -41,7 +41,7 @@ Analytics teams often struggle to validate data, investigate anomalies, and pinp
 - In the "Employee" vault, add a new "Login" item
 - Name this "TrinoCredentials"
 - Enter your Trino username and password and save
-- Now follow the rest of the instructions here https://developer.1password.com/docs/cli/get-started/#install
+- Now follow the rest of the instructions on https://developer.1password.com/docs/cli/get-started/#install
 
 ---
 
