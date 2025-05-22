@@ -34,7 +34,7 @@ Analytics teams often struggle to validate data, investigate anomalies, and pinp
 - Simple, intuitive user interface designed for analysts
 - Easy sharing and collaboration tools
 
-## Getting Started
+## Before Getting Started
 
 - Before you run the script, you'll want to enable Trino Connections from 1Password.
 - Go to https://mongodb.1password.com/
@@ -43,6 +43,18 @@ Analytics teams often struggle to validate data, investigate anomalies, and pinp
 - Enter your Trino username and password and save
 - Now follow the rest of the instructions on https://developer.1password.com/docs/cli/get-started/#install
 
+## Interacting with Viz It
+- Download the Viz It python file (or check it out from GitHub)
+- You will likely need to download the relevant libraries and may want to use a virtual environment
+- When the script runs successfully, you will see Process finished with exit code 0
+- Scroll up where it says "Warning: to view this Streamlit app on a browser, run it with the following
+  command: streamlit run [your path name will be here].py"
+- Copy paste the "streamlit run ___" command into your python terminalj
+- This should launch streamlit into your web browser
+- Copy paste your query and viz it!
+
+## Current Limitations
+- Your query dataset must be less than 200 MB (you will see an error otherwise)
 ---
 
-Stay tuned for more details and usage instructions!
+Enjoy!
